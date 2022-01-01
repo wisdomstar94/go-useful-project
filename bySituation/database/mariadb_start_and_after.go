@@ -17,6 +17,7 @@ func MariadbStartAndAfter() {
 	var result = common.Command("service", "mariadb", "start")
 	fmt.Println("result", result)
 
+	// 최초 초기화 작업이 이루어졌는지 아닌지 체크
 	if !isInit() {
 		fmt.Println("init 되지 않음.. init 시작!")
 
@@ -24,11 +25,10 @@ func MariadbStartAndAfter() {
 		var result2 = common.Command("mysql", "-e", "set password=password('112233abc');FLUSH PRIVILEGES;")
 		fmt.Println("result2", result2)
 
-		// 파일 생성
-		if !common.IsFileOrFolderExist("/golang") {
-			// 폴더 생성
-			common.CreateFolder("/golang")
-		}
+		// 폴더 생성 (이미 존재하는 폴더면 생성하지 않음)
+		common.CreateFolder("/golang")
+
+		// 파일 생성 (이미 존재하는 파일이면 생성하지 않음)
 		common.CreateFile(initCheckFile)
 	} else {
 		fmt.Println("init 된 상태!")

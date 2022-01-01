@@ -1,6 +1,10 @@
 package common
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 /*
 	패키지 로드시 호출되는 init 함수
@@ -18,6 +22,11 @@ func CreateFolder(folderPath string) bool {
 		return false
 	}
 
-	Command("mkdir", folderPath)
+	// Command("mkdir", folderPath)
+	err := os.Mkdir(folderPath, 0755)
+	if err != nil {
+		log.Fatal(err)
+		return false
+	}
 	return true
 }
