@@ -13,7 +13,7 @@ func init() {
 }
 
 /*
-	파일 생성하는 함수
+	파일 생성하는 함수 (이미 존재하는 파일이면 생성하지 않음)
 */
 func CreateFile(filePath string) bool {
 	log.Println("CreateFile 함수 호출됨.. filePath=", filePath)
@@ -25,7 +25,6 @@ func CreateFile(filePath string) bool {
 	_, err := os.Create(filePath)
 	if err != nil {
 		log.Println(err)
-		os.Exit(1)
 	}
 	return true
 }

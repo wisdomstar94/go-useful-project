@@ -13,7 +13,7 @@ func init() {
 }
 
 /*
-	폴더 생성하는 함수
+	폴더 생성하는 함수 (이미 존재하는 폴더면 생성하지 않음)
 */
 func CreateFolder(folderPath string) bool {
 	log.Println("CreateFolder 함수 호출됨.. folderPath=", folderPath)
@@ -24,7 +24,7 @@ func CreateFolder(folderPath string) bool {
 	// Command("mkdir", folderPath)
 	err := os.Mkdir(folderPath, 0755)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		return false
 	}
 	return true

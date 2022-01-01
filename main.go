@@ -1,16 +1,22 @@
 package main
 
 import (
-	"go-useful-project/bySituation/database"
 	"go-useful-project/customLibrarys/common"
 	"log"
 )
 
 func main() {
+	testLogFatal()
 	// testUuid()
-	database.MariadbStartAndAfter()
+	// database.MariadbStartAndAfter()
 	// testCommand()
 	// testSumString()
+}
+
+func testLogFatal() {
+	// log.Fatal 호출되면 멈춤! (그 이후 코드 실행 안됨)
+	log.Fatal("Fatal Error!")
+	log.Println("This is log?")
 }
 
 func testUuid() {
