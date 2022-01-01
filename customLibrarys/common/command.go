@@ -19,10 +19,10 @@ func Command(command string, arg ...string) string {
 	cmd := exec.Command(command, arg...)
 	output, err := cmd.Output()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Command Error :", err)
 		return "COMMAND_ERROR"
 	} else {
-		fmt.Println(string(output))
+		fmt.Println("Command Result", string(output))
 		return string(output)
 	}
 }
