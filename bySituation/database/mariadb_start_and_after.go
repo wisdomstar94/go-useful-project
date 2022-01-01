@@ -6,6 +6,7 @@ import (
 )
 
 const initCheckFile string = "/golang/init_success.txt"
+const initRootPassword string = "112233abc"
 
 /*
 	커맨드로 mariadb 를 실행시키고 이후 설정해야 할 커맨드 추가 입력
@@ -29,13 +30,16 @@ func startInit() {
 	log.Println("startInit() 함수 호출됨!")
 
 	// mariadb 의 root 계정 비밀번호를 112233abc 으로 변경
-	var result2 = common.Command("mysql", "-e", "set password=password('112233abc');FLUSH PRIVILEGES;")
+	var result2 = common.Command("mysql", "-e", common.SumString([]string{
+		common.SumString([]string{"set password=password('", initRootPassword, "');"}, ""),
+		"FLUSH PRIVILEGES;",
+	}, ""))
 	log.Println("result2", result2)
 
 	// mariadb 의 계정 추가
 	var result3 = common.Command("mysql", "-e", common.SumString([]string{
-		"CREATE USER 'root'@'172.17.0.1' IDENTIFIED BY '112233abc';",
-		"GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.0.1' IDENTIFIED BY '112233abc' WITH GRANT OPTION;",
+		common.SumString([]string{"CREATE USER 'root'@'172.17.0.1' IDENTIFIED BY '", initRootPassword, "';"}, ""),
+		common.SumString([]string{"GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.0.1' IDENTIFIED BY '", initRootPassword, "' WITH GRANT OPTION;"}, ""),
 		"FLUSH PRIVILEGES;",
 	}, ""))
 	log.Println("result3", result3)
