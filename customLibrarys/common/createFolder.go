@@ -1,7 +1,6 @@
 package common
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -17,7 +16,7 @@ func init() {
 	폴더 생성하는 함수
 */
 func CreateFolder(folderPath string) bool {
-	fmt.Println("CreateFolder 함수 호출됨.. folderPath=", folderPath)
+	log.Println("CreateFolder 함수 호출됨.. folderPath=", folderPath)
 	if IsFileOrFolderExist(folderPath) {
 		return false
 	}

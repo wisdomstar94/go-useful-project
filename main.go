@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"go-useful-project/bySituation/database"
 	"go-useful-project/customLibrarys/common"
+	"log"
 )
 
 func main() {
@@ -14,7 +14,7 @@ func main() {
 
 func testCommand() {
 	var result = common.Command("netstat", "-nap", "|", "grep", "LISTEN")
-	fmt.Println("result", result)
+	log.Println("result", result)
 }
 
 func testSumString() {
@@ -22,5 +22,5 @@ func testSumString() {
 	// stringValues = []string{"1", "2"}
 
 	var result = common.SumString(stringValues, ",")
-	fmt.Println(result)
+	log.Println(result)
 }

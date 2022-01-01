@@ -1,7 +1,7 @@
 package common
 
 import (
-	"fmt"
+	"log"
 	"os"
 )
 
@@ -16,7 +16,7 @@ func init() {
 	파일 생성하는 함수
 */
 func CreateFile(filePath string) bool {
-	fmt.Println("CreateFile 함수 호출됨.. filePath=", filePath)
+	log.Println("CreateFile 함수 호출됨.. filePath=", filePath)
 
 	if IsFileOrFolderExist(filePath) {
 		return false
@@ -24,7 +24,7 @@ func CreateFile(filePath string) bool {
 
 	_, err := os.Create(filePath)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		os.Exit(1)
 	}
 	return true
