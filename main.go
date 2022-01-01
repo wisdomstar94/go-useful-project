@@ -1,13 +1,14 @@
 package main
 
 import (
+	"go-useful-project/bySituation/database"
 	"go-useful-project/customLibrarys/common"
 	"log"
 )
 
 func main() {
-	testUuid()
-	// database.MariadbStartAndAfter()
+	// testUuid()
+	database.MariadbStartAndAfter()
 	// testCommand()
 	// testSumString()
 }

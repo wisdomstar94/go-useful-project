@@ -32,6 +32,14 @@ func startInit() {
 	var result2 = common.Command("mysql", "-e", "set password=password('112233abc');FLUSH PRIVILEGES;")
 	log.Println("result2", result2)
 
+	// mariadb 의 계정 추가
+	var result3 = common.Command("mysql", "-e", common.SumString([]string{
+		"CREATE USER 'root'@'172.17.0.1' IDENTIFIED BY '112233abc';",
+		"GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.0.1' IDENTIFIED BY '112233abc' WITH GRANT OPTION;",
+		"FLUSH PRIVILEGES;",
+	}, ""))
+	log.Println("result3", result3)
+
 	// 폴더 생성 (이미 존재하는 폴더면 생성하지 않음)
 	common.CreateFolder("/golang")
 
