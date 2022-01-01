@@ -1,15 +1,21 @@
 package main
 
 import (
-	"go-useful-project/bySituation/database"
 	"go-useful-project/customLibrarys/common"
 	"log"
 )
 
 func main() {
-	database.MariadbStartAndAfter()
+	testUuid()
+	// database.MariadbStartAndAfter()
 	// testCommand()
 	// testSumString()
+}
+
+func testUuid() {
+	log.Println("testUuid() 함수 호출됨!")
+	var result = common.GetUuid()
+	log.Println("result", result)
 }
 
 func testCommand() {
