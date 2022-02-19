@@ -1,12 +1,16 @@
 package main
 
 import (
+	"go-useful-project/bySituation/angular"
 	"go-useful-project/customLibrarys/common"
 	"log"
 )
 
 func main() {
-	testLogFatal()
+	angular.Apply()
+	// angular.ChangeClientToClientOld()
+
+	// testLogFatal()
 	// testUuid()
 	// database.MariadbStartAndAfter()
 	// testCommand()
