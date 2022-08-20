@@ -1,13 +1,14 @@
 package main
 
 import (
-	"go-useful-project/bySituation/angular"
+	dockerpscheck "go-useful-project/bySituation/docker-ps-check"
 	"go-useful-project/customLibrarys/common"
 	"log"
 )
 
 func main() {
-	angular.Apply()
+	dockerpscheck.Check()
+	// angular.Apply()
 	// angular.ChangeClientToClientOld()
 
 	// testLogFatal()
